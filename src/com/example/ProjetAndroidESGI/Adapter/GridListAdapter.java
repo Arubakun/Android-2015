@@ -1,71 +1,26 @@
 package com.example.ProjetAndroidESGI.Adapter;
 
+import android.content.Context;
 import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
 /**
  * Created by Alban on 06/01/2016.
  */
-public class GridListAdapter implements ListAdapter {
-    @Override
-    public boolean areAllItemsEnabled() {
-        return false;
-    }
+public class GridListAdapter extends ArrayAdapter {
 
-    @Override
-    public boolean isEnabled(int position) {
-        return false;
-    }
-
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-
-    }
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-
-    }
-
-    @Override
-    public int getCount() {
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
+    public GridListAdapter(Context context, int resource) {
+        super(context, resource);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
-    }
+        super.getView(position, convertView, parent);
+        View listItem = new View(getContext());
 
-    @Override
-    public int getItemViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 0;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
+        return listItem;
     }
 }
