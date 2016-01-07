@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+
+import com.example.ProjetAndroidESGI.Adapter.GridListAdapter;
 
 public class MyActivity extends ListActivity {
     /**
@@ -15,6 +18,9 @@ public class MyActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(new GridListAdapter());
 
         Intent intentWeb = new Intent(this, ArticleWeb.class);
 
