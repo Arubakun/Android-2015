@@ -2,22 +2,16 @@ package com.example.ProjetAndroidESGI;
 
 import android.app.Activity;
 import android.app.ListActivity;
-import android.app.LoaderManager;
 import android.content.Intent;
-import android.content.Loader;
-import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.example.ProjetAndroidESGI.Adapter.GridListAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class MyActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class MyActivity extends ListActivity {
     /**
      * Called when the activity is first created.
      */
@@ -26,52 +20,41 @@ public class MyActivity extends ListActivity implements LoaderManager.LoaderCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // Array de test de l'adapter
-        List<String> test = new ArrayList<String>();
-        test.add("article 1");
-        test.add("article 2");
-        test.add("article 3");
-        test.add("article 4");
-        test.add("article 5");
 
-        // Adapter permettant de récupérer les articles
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, R.layout.main, R.id.textView ,test);
+        Article[] items = {
+          new Article("Audio : Shure et BoomStick, le meilleur et le pire du CES 2016 pour nos mobiles", "http://www.frandroid.com/hardware/336213_audio-le-meilleur-et-le-pire-du-ces-pour-nos-mobiles", "Content"),
+          new Article("CES 2016 : en video, nos coups de coeur et nos deceptions", "http://www.frandroid.com/video/335923_ces-2016-en-video-nos-coups-de-coeur-et-nos-deceptions", "Content")
+        };
 
-        // ListView listant les articles
-        ListView listView = (ListView) findViewById(android.R.id.list);
-        listView.setAdapter(listAdapter);
+        ArrayAdapter<Article> adaptes = new ArrayAdapter<Article>(this, android.R.layout.simple_list_item_1, items);
+        setListAdapter(adaptes);
 
         Intent intentWeb = new Intent(this, ArticleWeb.class);
 
-        Button btn_web = (Button) findViewById(R.id.btn_article_web);
-        btn_web.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intentWeb);
-            }
-        });
+
 
         Intent intentText = new Intent(this, ArticleText.class);
 
-        Button btn_text = (Button) findViewById(R.id.btn_article_text);
-        btn_text.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intentText);
-            }
-        });
-    }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return null;
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+
+        super.onListItemClick(l, v, position, id);
+
+        // ListView Clicked item index
+        int itemPosition     = position;
+
+        // ListView Clicked item value
+        Article  article    = (Article) l.getItemAtPosition(position);
+        Log.d("Test_articles",article.toString());
+
+        Intent i = new Intent(this, ArticleWeb.class);
+        String url = article.url;
+        i.putExtra("URL", url);
+        startActivity(i);
 
     }
 }

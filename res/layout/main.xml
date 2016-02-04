@@ -3,28 +3,11 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-    android:weightSum="1">
+        >
+    <ListView android:id="@android:id/list"
+              android:layout_width="match_parent"
+              android:layout_height="269dp"
+              android:drawSelectorOnTop="false"/>
 
-    <ListView
-        android:id = "@android:id/list"
-        android:layout_width="match_parent"
-              android:layout_height="185dp"
-              android:drawSelectorOnTop="false"
-        android:choiceMode="singleChoice" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ArticleWeb"
-            android:id="@+id/btn_article_web" android:layout_gravity="center_horizontal"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ArticleText"
-            android:id="@+id/btn_article_text" android:layout_gravity="center_horizontal"/>
 </LinearLayout>
+
