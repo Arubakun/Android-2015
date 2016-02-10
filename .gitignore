@@ -44,3 +44,6 @@ Temporary Items
 .idea/*
 project.properties
 ProjetAndroidESGI.iml
+ProjetAndroidESGI.iml
+out/production/ProjetAndroidESGI/ProjetAndroidESGI.apk
+*.apk
