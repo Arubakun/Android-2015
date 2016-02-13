@@ -47,3 +47,5 @@ ProjetAndroidESGI.iml
 ProjetAndroidESGI.iml
 out/production/ProjetAndroidESGI/ProjetAndroidESGI.apk
 *.apk
+*.iml
+*.iml
