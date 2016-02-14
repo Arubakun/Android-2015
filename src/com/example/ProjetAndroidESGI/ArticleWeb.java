@@ -25,5 +25,4 @@ public class ArticleWeb extends Activity {
     public void setUrl(String url){
         this.article_web.loadUrl(url);
     }
-
 }
