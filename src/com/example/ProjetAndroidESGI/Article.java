@@ -18,6 +18,8 @@ public class Article {
     private String img;
     private String content;
 
+    public Article() {
+    }
 
     public Article(String title, String url, String img, String content) {
         this.title = title;
@@ -32,6 +34,12 @@ public class Article {
         this.url = url;
         this.img = img;
         this.content = content;
+    }
+
+    public Article(long id, String title, String url) {
+        this.id = id;
+        this.title = title;
+        this.url = url;
     }
 
     @Override

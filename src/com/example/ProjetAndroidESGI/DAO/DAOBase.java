@@ -1,7 +1,8 @@
-package com.example.ProjetAndroidESGI;
+package com.example.ProjetAndroidESGI.DAO;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import com.example.ProjetAndroidESGI.DAO.DatabaseHandler;
 
 /**
  * Created by Alban on 14/02/2016.
