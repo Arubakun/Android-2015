@@ -47,7 +47,7 @@ public class ArticleDAO extends DAOBase {
         return result;
     }
 
-    public void delete(final long id) {
+    public void deleteById(final long id) {
         open();
         db.delete(DatabaseHandler.TABLE_ARTICLE, DatabaseHandler.ARTICLE_ID + " = ?", new String[] {String.valueOf(id)});
         close();
@@ -64,11 +64,12 @@ public class ArticleDAO extends DAOBase {
         close();
     }
 
-    public Article getArticleById(final long id) {
+    public Article getById(final long id) {
         Article tmp = null;
 
         read();
         Cursor c = db.rawQuery("SELECT DISTINCT * FROM " + DatabaseHandler.TABLE_ARTICLE + " WHERE "+DatabaseHandler.ARTICLE_ID+" = ?", new String[]{String.valueOf(id)});
+        c.moveToFirst();
         tmp = new Article(c.getLong(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4));
         close();
 

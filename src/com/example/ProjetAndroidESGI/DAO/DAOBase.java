@@ -19,18 +19,22 @@ public class DAOBase {
     }
 
     public SQLiteDatabase open() {
+        if(this.db != null && !this.db.isOpen())
+            this.db = dbHandler.getWritableDatabase();
 
-        this.db = dbHandler.getWritableDatabase();
         return this.db;
     }
 
     public SQLiteDatabase read() {
-        this.db = dbHandler.getReadableDatabase();
+        if(this.db != null && !this.db.isOpen())
+            this.db = dbHandler.getReadableDatabase();
+
         return this.db;
     }
 
     public void close() {
-        this.db.close();
+        if(this.db != null && this.db.isOpen())
+            this.db.close();
     }
 
     public SQLiteDatabase getDB() {
