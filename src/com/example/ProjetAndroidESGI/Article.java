@@ -42,11 +42,6 @@ public class Article {
         this.url = url;
     }
 
-    @Override
-    public String toString(){
-        return this.title.substring(0,50) + "...";
-    }
-
     public long getId() {
         return id;
     }
@@ -85,5 +80,10 @@ public class Article {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    @Override
+    public String toString() {
+        return getId()+" "+getTitle()+" "+getUrl();
     }
 }
